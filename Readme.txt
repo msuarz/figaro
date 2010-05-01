@@ -1,1 +1,1 @@
-Test 123 JP Test 123
+Test 123 Test
