@@ -1,0 +1,20 @@
+|Figaro|
+
+|GET |1/statuses/public_timeline.xml|
+|Host|api.twitter.com               |
+
+|Send|
+
+|Response Header                              |
+|Name          |Value?                        |
+|Status        |200 OK                        |
+|ETag          |                              |
+|Last-Modified |                              |
+|Content-Type  |application/xml; charset=utf-8|
+|Content-Length|                              |
+|Expires       |                              |
+
+
+|Response Body|
+|Content?     |
+||
