@@ -1,0 +1,14 @@
+|Figaro|
+
+|GET |1/help/test.xml|
+|Host|api.twitter.com|
+
+|Send|
+
+|Response Header|
+|Name   |Value? |
+|Status |200 OK |
+
+|Response Body|
+|Content?     |
+|<ok>true</ok>|
