@@ -1,0 +1,30 @@
+|Figaro|
+
+!*> for current IP
+
+|GET          |http://api.twitter.com/1/account/rate_limit_status.xml|
+
+|Send|
+
+|Response Status should be |200 OK|
+
+|Response Body|
+|Content?     |
+|             |
+
+*!!*> for Kinobot
+
+|GET          |http://api.twitter.com/1/account/rate_limit_status.json|
+|Authorization|Basic                                                 |
+|User Name    |kinobot|
+|Password     |kashmir                                               |
+
+|Send|
+
+|Response Status should be |200 OK|
+
+|Response Body|
+|Content?     |
+|             |
+
+*!

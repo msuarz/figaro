@@ -1,9 +1,13 @@
 |Figaro|
 
+!*> GET with relative URI
+
 |GET |1/help/test.xml|
 |Host|api.twitter.com|
 
 |Send|
+
+|Response Status should be |200 OK|
 
 |Response Header|
 |Name   |Value? |
@@ -12,3 +16,15 @@
 |Response Body|
 |Content?     |
 |<ok>true</ok>|
+
+*!!*> GET with absolute URI
+
+|GET|http://api.twitter.com/1/help/test.json|
+
+|Send|
+
+|Response Body|
+|Content?     |
+|"ok"         |
+
+*!
