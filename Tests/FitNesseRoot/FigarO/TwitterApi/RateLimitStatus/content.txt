@@ -8,15 +8,14 @@
 
 |Response Status should be|200 OK|
 
-|Response Body|
-|Content?     |
-|             |
+|Response Body            |
+|XPath             |Value?|
+|/hash/hourly-limit|150   |
 
 *!!*> for Kinobot
 
 |GET|http://api.twitter.com/1/account/rate_limit_status.json|
-
-|with Basic Auth|
+|with Basic Auth                                            |
 
 |Send|
 

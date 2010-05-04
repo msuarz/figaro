@@ -45,17 +45,17 @@ namespace Figaro {
             Request.Headers.Add("Authorization", Authorization + " " + Token);
         }
 
-        public Fixture ResponseHeader {
-            get { return new HeaderColumnFixture(Response.Headers); }
-        }
+        public Fixture ResponseHeader { get { return new 
+            HeaderFixture(Response.Headers)
+        ;}}
 
-        public Fixture ResponseBody { get {
-            var Fixture = new ColumnFixture();
+        public Fixture ResponseBody { get { return new 
+            ResponseBodyFixture(ResponseContent)
+        ;}}
 
-            using( var Reader = new StreamReader(Response.GetResponseStream()))
-                Fixture.SetSystemUnderTest(new { Content = Reader.ReadToEnd() });
-
-            return Fixture;
-        }}
+        string ResponseContent { get {
+            using(var Reader = new StreamReader(Response.GetResponseStream()))
+                return Reader.ReadToEnd()
+        ;}}
     }
 }

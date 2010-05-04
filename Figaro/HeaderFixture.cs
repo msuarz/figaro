@@ -3,13 +3,13 @@ using fit;
 
 namespace Figaro {
 
-    class HeaderColumnFixture : ColumnFixture {
+    class HeaderFixture : ColumnFixture {
 
-        public WebHeaderCollection Headers { get; set; }
-
-        public HeaderColumnFixture(WebHeaderCollection Headers) {
+        public HeaderFixture(WebHeaderCollection Headers) {
             this.Headers = Headers;
         }
+
+        public WebHeaderCollection Headers { get; set; }
 
         public string Name { get; set; }
 
