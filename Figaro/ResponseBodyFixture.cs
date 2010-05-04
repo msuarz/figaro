@@ -9,20 +9,20 @@ namespace Figaro {
             this.Content = Content;
         }
 
-        XmlDocument xml;
-        XmlDocument Xml { get { return xml ?? LoadXml; } }
-        XmlDocument LoadXml { get {
-            xml = new XmlDocument();
-            xml.LoadXml(Content);
-            return xml;
+        XmlDocument body;
+        XmlDocument Body { get { return body ?? LoadBody; } }
+        XmlDocument LoadBody { get {
+            body = new XmlDocument();
+            body.LoadXml(Content);
+            return body;
         }}
 
-        public string Content { get; set; }
+        public string Content { get; private set; }
 
-        public string XPath { get; set; }
+        public string XPath { private get; set; }
 
         public string Value { get { return
-            Xml.SelectSingleNode(XPath).FirstChild.Value
+            Body.SelectSingleNode(XPath).FirstChild.Value
         ;}}
     }
 }

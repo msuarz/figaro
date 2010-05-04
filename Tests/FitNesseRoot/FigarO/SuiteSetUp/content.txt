@@ -1,1 +1,11 @@
+!*< just to make setup green
+
+|do|
+
+|reject|crap|
+
+*!
+
 !include -c DefineLibrary
+
+
