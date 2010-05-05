@@ -1,4 +1,5 @@
-using System.Xml;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using fit;
 
 namespace Figaro {
@@ -9,20 +10,16 @@ namespace Figaro {
             this.Content = Content;
         }
 
-        XmlDocument body;
-        XmlDocument Body { get { return body ?? LoadBody; } }
-        XmlDocument LoadBody { get {
-            body = new XmlDocument();
-            body.LoadXml(Content);
-            return body;
-        }}
+        XDocument body;
+        XDocument Body { get { return body ?? LoadBody; } }
+        XDocument LoadBody { get { return body = XDocument.Parse(Content); }}
 
         public string Content { get; private set; }
 
         public string XPath { private get; set; }
 
         public string Value { get { return
-            Body.SelectSingleNode(XPath).FirstChild.Value
+            Body.XPathSelectElement(XPath).Value
         ;}}
     }
 }
