@@ -20,8 +20,8 @@ namespace Figaro {
         private string GetValue()
         {
             var value = string.Empty;
-            if (!String.IsNullOrEmpty(XPath)) value = XMLResult.GetValueFor(XPath).ContainedIn(Content);
-            else if (!String.IsNullOrEmpty(JSONProperty)) value = JSONResult.GetValueFor(JSONProperty).ContainedIn(Content);
+            if (!String.IsNullOrEmpty(XPath)) value = XMLResult.ContainedIn(Content).GetValueFor(XPath);
+            else if (!String.IsNullOrEmpty(JSONProperty)) value = JSONResult.ContainedIn(Content).GetValueFor(JSONProperty);
             return value;
         }
     }

@@ -4,23 +4,24 @@ namespace Figaro
 {
     class JSONResult
     {
-        public static JSONResult GetValueFor(string propertyName)
+        static JSONResult Instance { get; set; } 
+
+        public static JSONResult ContainedIn(string rawJSON)
         {
-            return new JSONResult(propertyName);
+            if (Instance == null) Instance = new JSONResult(rawJSON);
+            return Instance;
         }
 
-        string PropertyName { get; set; }
+        Dictionary<string,string> JSONValues { get; set; }
 
-        private JSONResult(string propertyName)
+        private JSONResult(string rawJSON)
         {
-            PropertyName = propertyName;
+            JSONValues = JsonConvert.DeserializeObject<Dictionary<string, string>>(rawJSON);
         }
 
-        public string ContainedIn(string rawJSON)
+        public string GetValueFor(string propertyName)
         {
-            var result = string.Empty;
-            var jsonValues = JsonConvert.DeserializeObject<Dictionary<string, string>>(rawJSON);
-            return jsonValues[PropertyName];
+            return JSONValues[propertyName];
         }
 
     }

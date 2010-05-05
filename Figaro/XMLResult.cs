@@ -6,21 +6,24 @@ namespace Figaro
     class XMLResult
     {
 
-        public static XMLResult GetValueFor(string xPath)
+        static XMLResult Instance { get; set; }
+
+        public static XMLResult ContainedIn(string content)
         {
-            return new XMLResult(xPath);
+            if (Instance == null) Instance = new XMLResult(content);
+            return Instance;
         }
 
-        string XPath { get; set; }
+        XDocument Document { get; set; }
 
-        private XMLResult(string xPath)
+        private XMLResult(string content)
         {
-            XPath = xPath;
+            Document = XDocument.Parse(content);
         }
 
-        public string ContainedIn(string rawXml)
+        public string GetValueFor(string XPath)
         {
-            return XDocument.Parse(rawXml).XPathSelectElement(XPath).Value;
+            return Document.XPathSelectElement(XPath).Value;
         }
 
     }
