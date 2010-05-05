@@ -38,6 +38,10 @@
     <Reference Include="fitSharp">
       <HintPath>..\Tests\dotnet\fitSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json.Net20, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Tests\dotnet\Newtonsoft.Json.Net20.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.XML" />
@@ -46,8 +50,10 @@
   <ItemGroup>
     <Compile Include="Figaro.cs" />
     <Compile Include="HeaderFixture.cs" />
+    <Compile Include="JSONResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseBodyFixture.cs" />
+    <Compile Include="XMLResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Tests\dotnet\fitnesse.config">

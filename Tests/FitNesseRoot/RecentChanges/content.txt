@@ -1,4 +1,4 @@
-|FigarO.TwitterApi.RateLimitStatus||08:01:56 Tue, May 04, 2010|
+|FigarO.TwitterApi.RateLimitStatus||24:02:56 Wed, May 05, 2010|
 |FigarO.SuiteSetUp||07:34:53 Tue, May 04, 2010|
 |FigarO.DefineLibrary||23:09:37 Sun, May 02, 2010|
 |||22:33:17 Sun, May 02, 2010|

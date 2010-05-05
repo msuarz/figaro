@@ -22,7 +22,8 @@
 |Response Status should be|200 OK|
 
 |Response Body|
-|Content?     |
-|             |
+|JSON Property|Value?|
+|hourly_limit|150|
+|remaining_hits|150|
 
 *!
