@@ -13,17 +13,26 @@ namespace Figaro {
 
         public void Get(string URI) {
             ClearFields();
+            this.Method = "GET";
+            this.URI = URI;
+        }
+
+        public void Head(string URI) {
+            ClearFields();
+            this.Method = "HEAD";
             this.URI = URI;
         }
 
         void ClearFields() {
-            Host = Authorization = UserName = Password = null;
+            Method = Host = Authorization = UserName = Password = null;
         }
 
         string URI { get; set; }
+        string Method { get; set; }
 
         WebRequest Request { get; set; }
         WebResponse Response { get; set; }
+
 
         public string Host { get; set; }
         public string Authorization { get; set; }
@@ -32,7 +41,8 @@ namespace Figaro {
 
         public void Send() {
             Request = WebRequest.Create(RequestUriString);
-            AddAuthorization(); 
+            AddAuthorization();
+            Request.Method = Method;
             Response = Request.GetResponse();
         }
 

@@ -12,6 +12,16 @@
 |XPath             |Value?|
 |/hash/hourly-limit|150   |
 
+|HEAD|http://api.twitter.com/1/account/rate_limit_status.xml|
+
+|Send|
+
+|Response Status should be|200 OK|
+
+|Response Body|
+|Is Empty?|
+|true|
+
 *!!*> for Kinobot
 
 |GET|http://api.twitter.com/1/account/rate_limit_status.json|
@@ -25,5 +35,16 @@
 |JSON Property|Value?|
 |hourly_limit|150|
 |remaining_hits|150|
+
+|HEAD|http://api.twitter.com/1/account/rate_limit_status.json|
+|with Basic Auth                                            |
+
+|Send|
+
+|Response Status should be|200 OK|
+
+|Response Body|
+|Is Empty?|
+|true|
 
 *!

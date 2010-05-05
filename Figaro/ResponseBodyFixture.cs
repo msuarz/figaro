@@ -17,6 +17,8 @@ namespace Figaro {
 
         public string Value { get { return GetValue(); } }
 
+        public bool IsEmpty { get { return String.IsNullOrEmpty(Content); } }
+
         private string GetValue()
         {
             var value = string.Empty;
