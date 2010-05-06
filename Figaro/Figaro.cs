@@ -12,14 +12,16 @@ namespace Figaro {
         }}
 
         public void Get(string URI) {
-            ClearFields();
-            this.Method = "GET";
-            this.URI = URI;
+            ClearFieldsAndSetMethodAndUri("GET", URI);
         }
 
         public void Head(string URI) {
+            ClearFieldsAndSetMethodAndUri("HEAD",URI);
+        }
+
+        private void ClearFieldsAndSetMethodAndUri(string method, string URI) {
             ClearFields();
-            this.Method = "HEAD";
+            this.Method = method;
             this.URI = URI;
         }
 
