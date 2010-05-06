@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figaro", "Figaro\Figaro.csproj", "{7D5559E8-710A-48A9-9489-DDD2C6715764}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Specs", "Specs\Specs.csproj", "{A3FF09C1-A0F7-410C-B3C3-F02F81A45CE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{7D5559E8-710A-48A9-9489-DDD2C6715764}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D5559E8-710A-48A9-9489-DDD2C6715764}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D5559E8-710A-48A9-9489-DDD2C6715764}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3FF09C1-A0F7-410C-B3C3-F02F81A45CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3FF09C1-A0F7-410C-B3C3-F02F81A45CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3FF09C1-A0F7-410C-B3C3-F02F81A45CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3FF09C1-A0F7-410C-B3C3-F02F81A45CE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

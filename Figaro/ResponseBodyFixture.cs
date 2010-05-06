@@ -5,26 +5,42 @@ namespace Figaro {
 
     public class ResponseBodyFixture : ColumnFixture {
 
+        Body body;
+        public virtual Body Body { get { return body ?? InitBody; } }
+        Body InitBody { get { 
+            
+            if (string.IsNullOrEmpty(XPath)) 
+                body = new JsonBody(Content);
+            else body = new XmlBody(Content);
+
+            return body;
+        }}
+
+        public ResponseBodyFixture() {}
+
         public ResponseBodyFixture(string Content) {
             this.Content = Content;
         }
 
         public string Content { get; private set; }
 
-        public string XPath { private get; set; }
+        public string XPath { get; set; }
 
-        public string JSONProperty { private get; set; }
+        public string JsonProperty { get; set; }
 
-        public string Value { get { return GetValue(); } }
+        public string Value { get {
+            
+            if (string.IsNullOrEmpty(XPath) && string.IsNullOrEmpty(JsonProperty)) 
+                throw new Exception("Please set XPath or JSONProperty.");
+            
+            return Body.ValueOf(Part);
+        }}
+
+        string Part { get { return 
+            string.IsNullOrEmpty(XPath) ? 
+                JsonProperty : XPath
+        ;}}
 
         public bool IsEmpty { get { return String.IsNullOrEmpty(Content); } }
-
-        private string GetValue()
-        {
-            var value = string.Empty;
-            if (!String.IsNullOrEmpty(XPath)) value = XMLResult.ContainedIn(Content).GetValueFor(XPath);
-            else if (!String.IsNullOrEmpty(JSONProperty)) value = JSONResult.ContainedIn(Content).GetValueFor(JSONProperty);
-            return value;
-        }
     }
 }
