@@ -1,0 +1,9 @@
+!|define|Response Status should be|StatusCode|
+|Response Header|
+|Name   |Value? |
+|Status |StatusCode|
+
+|define|with Basic Auth|
+|Authorization|Basic  |
+|User Name    |kinobot|
+|Password     |kashmir|

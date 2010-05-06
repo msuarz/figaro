@@ -1,3 +1,6 @@
+!define COLLAPSE_SETUP {true}
+!define COLLAPSE_TEARDOWN {true}
+
 !*> using fitsharp
 
 !define COMMAND_PATTERN {%m -c dotnet\fitnesse.config -r fitnesse.fitserver.FitServer,dotnet\fit.dll %p}
