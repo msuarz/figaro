@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using fit;
@@ -6,35 +7,32 @@ using fit;
 namespace Figaro {
     
     public class Figaro {
+        
+        public void Debug() { Debugger.Launch(); }
 
         string RequestUriString { get { return 
-            string.IsNullOrEmpty(Host) ? URI : "http://" + Host + "/" + URI; 
+            string.IsNullOrEmpty(Host) ? Uri : "http://" + Host + "/" + Uri; 
         }}
 
-        public void Get(string URI) {
-            ClearFieldsAndSetMethodAndUri("GET", URI);
-        }
+        public void Get(string Uri) { SetUpRequest("GET", Uri); }
 
-        public void Head(string URI) {
-            ClearFieldsAndSetMethodAndUri("HEAD",URI);
-        }
+        public void Head(string Uri) { SetUpRequest("HEAD", Uri); }
 
-        private void ClearFieldsAndSetMethodAndUri(string method, string URI) {
+        private void SetUpRequest(string Method, string Uri) {
             ClearFields();
-            this.Method = method;
-            this.URI = URI;
+            this.Method = Method;
+            this.Uri = Uri;
         }
 
         void ClearFields() {
             Method = Host = Authorization = UserName = Password = null;
         }
 
-        string URI { get; set; }
+        string Uri { get; set; }
         string Method { get; set; }
 
         WebRequest Request { get; set; }
         WebResponse Response { get; set; }
-
 
         public string Host { get; set; }
         public string Authorization { get; set; }
@@ -62,7 +60,7 @@ namespace Figaro {
         ;}}
 
         public Fixture ResponseBody { get { return new 
-            ResponseBodyFixture(ResponseContent)
+            ResponseBodyFixture { Content = ResponseContent }
         ;}}
 
         string ResponseContent { get {

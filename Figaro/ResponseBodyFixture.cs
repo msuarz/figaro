@@ -7,8 +7,8 @@ namespace Figaro {
 
         Body body;
         public virtual Body Body { get { return body ?? InitBody; } }
-        Body InitBody { get { 
-            
+        Body InitBody { get {
+
             if (string.IsNullOrEmpty(XPath)) 
                 body = new JsonBody(Content);
             else body = new XmlBody(Content);
@@ -16,13 +16,7 @@ namespace Figaro {
             return body;
         }}
 
-        public ResponseBodyFixture() {}
-
-        public ResponseBodyFixture(string Content) {
-            this.Content = Content;
-        }
-
-        public string Content { get; private set; }
+        public string Content { get; set; }
 
         public string XPath { get; set; }
 
