@@ -59,13 +59,15 @@ namespace Figaro {
             HeaderFixture(Response.Headers)
         ;}}
 
-        public Fixture ResponseBody { get { return new 
-            ResponseBodyFixture { Content = ResponseContent }
+        public Fixture ResponseBody { get { return 
+            BodyFactory.NewResponseBodyFixture(ContentType, ResponseContent)
         ;}}
 
         string ResponseContent { get {
-            using(var Reader = new StreamReader(Response.GetResponseStream()))
+            using (var Reader = new StreamReader(Response.GetResponseStream()))
                 return Reader.ReadToEnd()
         ;}}
+
+        string ContentType { get { return Response.Headers["Content-Type"]; }}
     }
 }

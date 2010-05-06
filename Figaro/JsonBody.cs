@@ -5,12 +5,14 @@ namespace Figaro {
 
     public class JsonBody : Body {
 
-        Dictionary<string,string> JSONValues { get; set; }
+        Dictionary<string,string> jsonValues;
+        Dictionary<string,string> JsonValues { get { return jsonValues ?? LoadJsonValues; } }
+        Dictionary<string,string> LoadJsonValues { get { return 
+            jsonValues = JsonConvert.DeserializeObject<Dictionary<string, string>>(Content)        
+        ;}}
 
-        public JsonBody(string Content) {
-            JSONValues = JsonConvert.DeserializeObject<Dictionary<string, string>>(Content);
-        }
+        public string Content { get; set; }
 
-        public string ValueOf(string Part) { return JSONValues[Part]; }
+        public string ValueOf(string Part) { return JsonValues[Part]; }
     }
 }

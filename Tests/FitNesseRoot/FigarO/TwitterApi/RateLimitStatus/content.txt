@@ -10,7 +10,7 @@
 |Response Status should be|200 OK|
 
 |Response Body            |
-|XPath             |Value?|
+|Part|Value?|
 |/hash/hourly-limit|150   |
 
 |HEAD|http://api.twitter.com/1/account/rate_limit_status.xml|
@@ -34,7 +34,7 @@
 |Response Status should be|200 OK|
 
 |Response Body|
-|JSON Property|Value?|
+|Part|Value?|
 |hourly_limit|150|
 |remaining_hits|150|
 

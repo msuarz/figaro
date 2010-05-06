@@ -52,6 +52,7 @@
     <Compile Include="Figaro.cs" />
     <Compile Include="HeaderFixture.cs" />
     <Compile Include="JsonBody.cs" />
+    <Compile Include="BodyFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseBodyFixture.cs" />
     <Compile Include="XmlBody.cs" />
