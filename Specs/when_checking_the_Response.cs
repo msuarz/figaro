@@ -13,8 +13,8 @@ namespace Specs {
             [TestMethod]
             public void should_be_able_to_find_Values_using_XPath() {
 
-                Given.Content = "<value>42</value>";
-                The.ValueOf("/value").ShouldBe("42");
+                Given.Content = "<field>42</field>";
+                The.ValueOf("/field").ShouldBe("42");
             }
         }
 
@@ -24,8 +24,8 @@ namespace Specs {
             [TestMethod]
             public void should_be_able_to_find_Values_using_JSON() {
                 
-                Given.Content = "{\"value\":42}";
-                The.ValueOf("value").ShouldBe("42");
+                Given.Content = "{\"field\":42}";
+                The.ValueOf("field").ShouldBe("42");
             }
         }
 

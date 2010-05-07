@@ -7,24 +7,25 @@ namespace Figaro {
     
     public class HttpFixture {
         
-        public void Get(string Uri) { SetUpRequest("GET", Uri); }
-        public void Head(string Uri) { SetUpRequest("HEAD", Uri); }
-
+        public string Method { get; set; }
+        public string Uri { get; set; }
         public string Host { get; set; }
         public string Authorization { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string Uri { get; set; }
-        public string Method { get; set; }
+
+        public void Get(string Uri) { SetUpNewRequest("GET", Uri); }
+        public void Head(string Uri) { SetUpNewRequest("HEAD", Uri); }
+        
+        void SetUpNewRequest(string Method, string Uri) {
+            this.Method = Method;
+            this.Uri = Uri;
+            Host = Authorization = UserName = Password = null;
+        }
 
         string RequestUriString { get { return 
             string.IsNullOrEmpty(Host) ? Uri : "http://" + Host + "/" + Uri; 
         }}
-        void SetUpRequest(string Method, string Uri) {
-            ClearFields();
-            this.Method = Method;
-            this.Uri = Uri;
-        }
         void AddAuthorization() { 
             if (string.IsNullOrEmpty(Authorization)) return;
 
@@ -32,10 +33,6 @@ namespace Figaro {
                 System.Text.Encoding.UTF8.GetBytes(UserName + ":" + Password));
             
             Request.Headers.Add("Authorization", Authorization + " " + Token);
-        }
-
-        void ClearFields() {
-            Method = Host = Authorization = UserName = Password = null;
         }
 
         WebRequest Request { get; set; }
