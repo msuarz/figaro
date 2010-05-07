@@ -6,46 +6,24 @@ using fit;
 
 namespace Figaro {
     
-    public class Figaro {
+    public class HttpFixture {
         
-        public void Debug() { Debugger.Launch(); }
-
-        string RequestUriString { get { return 
-            string.IsNullOrEmpty(Host) ? Uri : "http://" + Host + "/" + Uri; 
-        }}
-
         public void Get(string Uri) { SetUpRequest("GET", Uri); }
-
         public void Head(string Uri) { SetUpRequest("HEAD", Uri); }
-
-        private void SetUpRequest(string Method, string Uri) {
-            ClearFields();
-            this.Method = Method;
-            this.Uri = Uri;
-        }
-
-        void ClearFields() {
-            Method = Host = Authorization = UserName = Password = null;
-        }
-
-        string Uri { get; set; }
-        string Method { get; set; }
-
-        WebRequest Request { get; set; }
-        WebResponse Response { get; set; }
 
         public string Host { get; set; }
         public string Authorization { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
 
-        public void Send() {
-            Request = WebRequest.Create(RequestUriString);
-            AddAuthorization();
-            Request.Method = Method;
-            Response = Request.GetResponse();
+        string RequestUriString { get { return 
+            string.IsNullOrEmpty(Host) ? Uri : "http://" + Host + "/" + Uri; 
+        }}
+        void SetUpRequest(string Method, string Uri) {
+            ClearFields();
+            this.Method = Method;
+            this.Uri = Uri;
         }
-
         void AddAuthorization() { 
             if (string.IsNullOrEmpty(Authorization)) return;
 
@@ -55,19 +33,34 @@ namespace Figaro {
             Request.Headers.Add("Authorization", Authorization + " " + Token);
         }
 
+        void ClearFields() {
+            Method = Host = Authorization = UserName = Password = null;
+        }
+
+        public string Uri { get; set; }
+        public string Method { get; set; }
+
+        WebRequest Request { get; set; }
+        WebResponse Response { get; set; }
+
+        public void Send() {
+            Request = WebRequest.Create(RequestUriString);
+            AddAuthorization();
+            Request.Method = Method;
+            Response = Request.GetResponse();
+        }
+
         public Fixture ResponseHeader { get { return new 
             HeaderFixture(Response.Headers)
         ;}}
-
         public Fixture ResponseBody { get { return 
             BodyFactory.NewResponseBodyFixture(ContentType, ResponseContent)
         ;}}
 
+        string ContentType { get { return Response.Headers["Content-Type"]; }}
         string ResponseContent { get {
             using (var Reader = new StreamReader(Response.GetResponseStream()))
                 return Reader.ReadToEnd()
         ;}}
-
-        string ContentType { get { return Response.Headers["Content-Type"]; }}
     }
 }
