@@ -1,5 +1,5 @@
-|FigarO.TwitterApi.HelpTest||01:07:02 Thu, May 06, 2010|
-|FigarO.TwitterApi.RateLimitStatus||24:59:55 Thu, May 06, 2010|
+|FigarO.TwitterApi.RateLimitStatus||22:41:12 Thu, May 06, 2010|
+|FigarO.TwitterApi.HelpTest||22:38:29 Thu, May 06, 2010|
 |FigarO.SuiteSetUp||07:34:53 Tue, May 04, 2010|
 |FigarO.DefineLibrary||23:09:37 Sun, May 02, 2010|
 |||22:33:17 Sun, May 02, 2010|
