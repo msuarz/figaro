@@ -1,4 +1,4 @@
-|Figaro|
+|Http|
 
 !*> GET with relative URI
 

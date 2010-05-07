@@ -49,7 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Body.cs" />
-    <Compile Include="Figaro.cs" />
+    <Compile Include="DebugFixture.cs" />
+    <Compile Include="HttpFixture.cs" />
     <Compile Include="HeaderFixture.cs" />
     <Compile Include="JsonBody.cs" />
     <Compile Include="BodyFactory.cs" />

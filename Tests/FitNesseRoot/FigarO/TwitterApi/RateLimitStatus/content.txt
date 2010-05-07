@@ -1,16 +1,16 @@
-|Figaro|
+|Http|
 
 !*> for current IP
 
 |GET|http://api.twitter.com/1/account/rate_limit_status.xml|
-|with Basic Auth                                            |
+|with Basic Auth                                           |
 
 |Send|
 
 |Response Status should be|200 OK|
 
 |Response Body            |
-|Part|Value?|
+|Part              |Value?|
 |/hash/hourly-limit|150   |
 
 |HEAD|http://api.twitter.com/1/account/rate_limit_status.xml|
@@ -21,8 +21,8 @@
 |Response Status should be|200 OK|
 
 |Response Body|
-|Is Empty?|
-|true|
+|Is Empty?    |
+|true         |
 
 *!!*> for Kinobot
 
@@ -35,18 +35,18 @@
 
 |Response Body|
 |Part|Value?|
-|hourly_limit|150|
+|hourly_limit  |150|
 |remaining_hits|150|
 
 |HEAD|http://api.twitter.com/1/account/rate_limit_status.json|
-|with Basic Auth                                            |
+|with Basic Auth                                             |
 
 |Send|
 
 |Response Status should be|200 OK|
 
 |Response Body|
-|Is Empty?|
-|true|
+|Is Empty?    |
+|true         |
 
 *!

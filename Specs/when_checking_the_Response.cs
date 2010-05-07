@@ -5,45 +5,42 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Specs {
 
     [TestClass]
-    public class when_checking_the_Response : BehaviorOf<ResponseBodyFixture> {
+    public class when_checking_the_Response {
         
-        readonly Body Body = TestObjectFor<Body>();
+        [TestClass]
+        public class in_Xml : BehaviorOf<XmlBody> {
+            
+            [TestMethod]
+            public void should_be_able_to_find_Values_using_XPath() {
 
-        [TestInitialize]
-        public void SetUp() { Given.Body.Is(Body); }
-
-        [TestMethod]
-        public void should_be_able_to_find_Values_using_XPath() {
-
-//            Given.XPath = "meaning of life";
-
-            Body.Given().ValueOf("meaning of life").Is("42");
-
-            The.Value.ShouldBe("42");
+                Given.Content = "<field>42</field>";
+                The.ValueOf("/field").ShouldBe("42");
+            }
         }
 
-        [TestMethod]
-        public void should_be_able_to_find_Values_using_JSON() {
+        [TestClass]
+        public class in_Json : BehaviorOf<JsonBody> {
 
-//            Given.JsonProperty = "meaning of life";
-            
-            Body.Given().ValueOf("meaning of life").Is("42");
-
-            The.Value.ShouldBe("42");
+            [TestMethod]
+            public void should_be_able_to_find_Values_using_JSON() {
+                
+                Given.Content = "{\"field\":42}";
+                The.ValueOf("field").ShouldBe("42");
+            }
         }
 
         [TestMethod]
         public void should_load_XmlBody_for_XPath() {
 
-//            Given.XPath = "using xml";
-            The.Body.ShouldBeA<XmlBody>();
+            (BodyFactory.NewResponseBodyFixture("application/xml","") as ResponseBodyFixture)
+                .Body.ShouldBeA<XmlBody>();
         }
 
         [TestMethod]
         public void should_load_JsonBody_for_JsonProperties() {
 
-//            Given.JsonProperty = "using json";
-            The.Body.ShouldBeA<JsonBody>();
+            (BodyFactory.NewResponseBodyFixture("application/json","") as ResponseBodyFixture)
+                .Body.ShouldBeA<JsonBody>();
         }
     }
 }
