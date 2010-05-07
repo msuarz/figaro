@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using fit;
@@ -15,6 +14,8 @@ namespace Figaro {
         public string Authorization { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public string Uri { get; set; }
+        public string Method { get; set; }
 
         string RequestUriString { get { return 
             string.IsNullOrEmpty(Host) ? Uri : "http://" + Host + "/" + Uri; 
@@ -36,9 +37,6 @@ namespace Figaro {
         void ClearFields() {
             Method = Host = Authorization = UserName = Password = null;
         }
-
-        public string Uri { get; set; }
-        public string Method { get; set; }
 
         WebRequest Request { get; set; }
         WebResponse Response { get; set; }

@@ -15,5 +15,16 @@ namespace Specs {
             Then.Method.ShouldBe("GET");
             And.Uri.ShouldBe("localhost");
         }
+
+        [TestMethod]
+        public void should_not_reuse_fields_between_Requests() {
+
+            Given.Host = "previous host";
+            When.Get("localhost");
+            Then.Host.ShouldBeEmpty();
+        }
+
+        [TestMethod]
+        public void should_use_URI_if_no_host_provided() {}
     }
 }
