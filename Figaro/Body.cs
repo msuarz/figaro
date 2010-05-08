@@ -1,8 +1,8 @@
 namespace Figaro {
 
     public interface Body {
-        
-        string Content { get; }
+
+        string Content { get; set; }
         string ValueOf(string Part);
     }
 }

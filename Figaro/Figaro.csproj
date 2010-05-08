@@ -42,6 +42,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Tests\dotnet\Newtonsoft.Json.Net20.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\lib\StructureMap\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.XML" />
