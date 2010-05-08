@@ -34,13 +34,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="fit">
-      <HintPath>..\Tests\dotnet\fit.dll</HintPath>
+      <HintPath>..\Features\dotnet\fit.dll</HintPath>
     </Reference>
     <Reference Include="fitSharp">
-      <HintPath>..\Tests\dotnet\fitSharp.dll</HintPath>
+      <HintPath>..\Features\dotnet\fitSharp.dll</HintPath>
     </Reference>
     <Reference Include="FluentSpec">
-      <HintPath>..\lib\fluentspec\FluentSpec.dll</HintPath>
+      <HintPath>..\..\lib\fluentspec\FluentSpec.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -59,7 +59,7 @@
     <Compile Include="when_making_an_Http_Request.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Figaro\Figaro.csproj">
+    <ProjectReference Include="..\..\Figaro\Figaro.csproj">
       <Project>{7D5559E8-710A-48A9-9489-DDD2C6715764}</Project>
       <Name>Figaro</Name>
     </ProjectReference>

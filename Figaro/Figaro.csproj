@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Tests\dotnet\</OutputPath>
+    <OutputPath>..\Tests\Features\dotnet\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,21 +26,21 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Tests\dotnet\</OutputPath>
+    <OutputPath>..\Tests\Features\dotnet\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="fit">
-      <HintPath>..\Tests\dotnet\fit.dll</HintPath>
+      <HintPath>..\Tests\Features\dotnet\fit.dll</HintPath>
     </Reference>
     <Reference Include="fitSharp">
-      <HintPath>..\Tests\dotnet\fitSharp.dll</HintPath>
+      <HintPath>..\Tests\Features\dotnet\fitSharp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json.Net20, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Tests\dotnet\Newtonsoft.Json.Net20.dll</HintPath>
+      <HintPath>..\Tests\Features\dotnet\Newtonsoft.Json.Net20.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\lib\StructureMap\StructureMap.dll</HintPath>
@@ -62,7 +62,7 @@
     <Compile Include="XmlBody.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Tests\dotnet\fitnesse.config">
+    <None Include="..\Tests\Features\dotnet\fitnesse.config">
       <Link>fitnesse.config</Link>
     </None>
   </ItemGroup>
