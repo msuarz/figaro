@@ -1,12 +1,19 @@
 using Figaro;
+using Figaro.Classes;
 using FluentSpec;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Specs.Helpers;
 
 namespace Specs {
 
     [TestClass]
     public class when_making_an_Http_Request : BehaviorOf<HttpFixture> {
-        
+
+        [TestInitialize]
+        public void SetUp() {
+            Given.RequestFactory = TestObjectFor<RequestFactory>();
+        }
+
         [TestMethod]
         public void should_be_able_to_GET() {
             
@@ -25,15 +32,44 @@ namespace Specs {
         }
 
         [TestMethod]
-        public void should_get_the_Response() {
+        public void should_send_the_Request_and_get_Response() {
+            var Request = TestObjectFor<Request>();
+            var ExpectedResponse = TestObjectFor<Response>();
+
+            Given.RequestFactory.NewRequest(It).Is(Request);
+            Request.Given().Response.Is(ExpectedResponse);
             
             When.Send();
-            Should.PrepareRequest();
-            And.GetResponse();
+
+            Then.Response.ShouldBe(ExpectedResponse);
         }
 
-        [TestMethod]
-        public void should_use_URI_if_no_host_provided() {}
+        [TestClass]
+        public class a_RequestFactory : BehaviorOf<RequestFactoryClass>{
 
+            [TestMethod]
+            public void should_build_a_new_Request() {
+                var Fixture = Actors.HttpFixture;
+
+                Given.RequestUriString(Fixture.Host, Fixture.Uri)
+                    .WillReturn("http://google.com");
+
+                The.NewRequest(Fixture).ShouldNotBeNull();
+            }
+
+            [TestMethod]
+            public void should_use_Uri_if_no_host_provided() {
+                
+                When.RequestUriString(null, "expected uri")
+                    .ShouldBe("expected uri");
+            }
+
+            [TestMethod]
+            public void should_compose_Uri_with_Host_if_provided() {
+                
+                When.RequestUriString("host", "expected uri")
+                    .ShouldBe("http://host/expected uri");
+            }
+        }
     }
 }

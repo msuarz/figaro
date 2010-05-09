@@ -54,6 +54,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Actors.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="when_checking_the_Response.cs" />
     <Compile Include="when_making_an_Http_Request.cs" />
