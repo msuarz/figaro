@@ -27,8 +27,7 @@
 |Content?     |
 |"ok"         |
 
-*!
-!*> HEAD with relative URI
+*!!*> HEAD with relative URI
 
 |HEAD|1/help/test.xml|
 |Host|api.twitter.com|

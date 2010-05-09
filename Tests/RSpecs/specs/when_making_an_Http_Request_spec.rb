@@ -1,7 +1,7 @@
 require "spec"
 require File.join(File.dirname(__FILE__), "../../Features/dotnet","Figaro.dll")
 
-describe Figaro::HttpFixture, "when making an Http Request" do
+describe "when making an Http Request" do
 
   before(:each) do
     @sut = Figaro::HttpFixture.new

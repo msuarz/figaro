@@ -3,7 +3,6 @@
 !*> for current IP
 
 |GET|http://api.twitter.com/1/account/rate_limit_status.xml|
-|with Basic Auth                                           |
 
 |Send|
 
@@ -14,7 +13,6 @@
 |/hash/hourly-limit|150   |
 
 |HEAD|http://api.twitter.com/1/account/rate_limit_status.xml|
-|with Basic Auth                                            |
 
 |Send|
 

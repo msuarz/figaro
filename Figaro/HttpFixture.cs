@@ -1,14 +1,15 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Threading;
 using fit;
 
 namespace Figaro {
     
     public class HttpFixture {
-        
-        public string Method { get; set; }
-        public string Uri { get; set; }
+
+        public void Sleep(int Sec) { Thread.Sleep(Sec * 1000); }
+
         public string Host { get; set; }
         public string Authorization { get; set; }
         public string UserName { get; set; }
@@ -23,7 +24,10 @@ namespace Figaro {
             Host = Authorization = UserName = Password = null;
         }
 
-        string RequestUriString { get { return 
+        public string Method { get; set; }
+        public string Uri { get; private set; }
+
+        public virtual string RequestUriString { get { return 
             string.IsNullOrEmpty(Host) ? Uri : "http://" + Host + "/" + Uri; 
         }}
         void AddAuthorization() { 
@@ -35,13 +39,21 @@ namespace Figaro {
             Request.Headers.Add("Authorization", Authorization + " " + Token);
         }
 
-        WebRequest Request { get; set; }
-        WebResponse Response { get; set; }
+        public WebRequest Request { get; set; }
+        public WebResponse Response { get; set; }
 
         public void Send() {
+            PrepareRequest();
+            GetResponse();
+        }
+
+        public virtual void PrepareRequest() {
             Request = WebRequest.Create(RequestUriString);
             AddAuthorization();
             Request.Method = Method;
+        }
+
+        public virtual void GetResponse() {
             Response = Request.GetResponse();
         }
 

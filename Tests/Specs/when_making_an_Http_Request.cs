@@ -25,6 +25,15 @@ namespace Specs {
         }
 
         [TestMethod]
+        public void should_get_the_Response() {
+            
+            When.Send();
+            Should.PrepareRequest();
+            And.GetResponse();
+        }
+
+        [TestMethod]
         public void should_use_URI_if_no_host_provided() {}
+
     }
 }
