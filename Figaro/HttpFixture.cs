@@ -5,9 +5,7 @@ namespace Figaro {
     
     public class HttpFixture {
 
-        public HttpFixture() {
-            RequestFactory = new RequestFactoryClass();
-        }
+        public HttpFixture() { RequestFactory = new RequestFactoryClass(); }
 
         public string Method { get; set; }
         public string Uri { get; set; }
@@ -26,8 +24,7 @@ namespace Figaro {
         }
 
         public RequestFactory RequestFactory { get; set; }
-
-        public Response Response { get; private set; }
+        public Response Response { get; set; }
 
         public void Send() {
             Response = RequestFactory.NewRequest(this).Response;

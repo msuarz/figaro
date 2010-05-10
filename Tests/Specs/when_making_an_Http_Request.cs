@@ -9,9 +9,11 @@ namespace Specs {
     [TestClass]
     public class when_making_an_Http_Request : BehaviorOf<HttpFixture> {
 
+        readonly RequestFactory RequestFactory = TestObjectFor<RequestFactory>();
+
         [TestInitialize]
         public void SetUp() {
-            Given.RequestFactory = TestObjectFor<RequestFactory>();
+            Given.RequestFactory = RequestFactory;
         }
 
         [TestMethod]
@@ -36,7 +38,7 @@ namespace Specs {
             var Request = TestObjectFor<Request>();
             var ExpectedResponse = TestObjectFor<Response>();
 
-            Given.RequestFactory.NewRequest(It).Is(Request);
+            RequestFactory.Given().NewRequest(It).Is(Request);
             Request.Given().Response.Is(ExpectedResponse);
             
             When.Send();
