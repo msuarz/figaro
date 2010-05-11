@@ -1,3 +1,4 @@
+using System;
 using Figaro.Classes;
 using fit;
 
@@ -34,9 +35,16 @@ namespace Figaro {
             HeaderFixture(Response.Headers)
         ;}}
 
-        public Fixture ResponseBody { get { return 
+        public Fixture ResponseBody() { return 
             BodyFactory.NewResponseBodyFixture(
                 Response.ContentType, Response.Content)
-        ;}}
+        ;}
+
+        public Fixture ResponseBody(string PartPrefix)
+        {
+            return BodyFactory.NewResponseBodyFixture(
+                Response.ContentType, Response.Content, PartPrefix);
+        }
+
     }
 }

@@ -24,6 +24,15 @@ namespace Specs {
                 The.ValueOf("dog.name").ShouldBe("Fido");
             }
 
+            [TestMethod]
+            public void should_be_able_to_find_Values_with_a_Part_Prefix() {
+                
+                Given.Content = @"<person><address>
+                                    <city>Miami</city>
+                                 </address></person>";
+                The.ValueOf("city","person.address").ShouldBe("Miami");
+            }
+
         }
 
         [TestClass]

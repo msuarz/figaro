@@ -13,6 +13,6 @@ namespace Figaro {
 
         public string Content { get; set; }
 
-        public string ValueOf(string Part) { return JsonValues[Part]; }
+        public string ValueOf(string Part, string PartPrefix = "") { return JsonValues[Part]; }
     }
 }
