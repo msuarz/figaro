@@ -5,7 +5,7 @@ namespace Figaro.Classes {
 
     public class RequestFactoryClass : RequestFactory {
 
-        public HttpRequest NewHttpRequest { get; set; }
+        public Request NewHttpRequest { get; set; }
 
         public Request NewRequest(HttpFixture Fixture) {
 
@@ -15,7 +15,7 @@ namespace Figaro.Classes {
 
             AddAuthorization(Fixture.Authorization, Fixture.UserName, Fixture.Password);
 
-            NewHttpRequest.Core.Method = Fixture.Method;
+            NewHttpRequest.Method = Fixture.Method;
 
             return NewHttpRequest;
         }
@@ -27,11 +27,14 @@ namespace Figaro.Classes {
         public virtual void AddAuthorization(string Authorization, string UserName, string Password) { 
             if (string.IsNullOrEmpty(Authorization)) return;
 
-            var Token = Convert.ToBase64String(
-                System.Text.Encoding.UTF8.GetBytes(UserName + ":" + Password));
-            
-            NewHttpRequest.Core.Headers.Add("Authorization", Authorization + " " + Token);
+            NewHttpRequest.Headers.Add("Authorization", 
+                Authorization + " " + Encrypt(UserName, Password));
         }
 
+        public virtual string Encrypt(string UserName, string Password) { return
+            Convert.ToBase64String(
+                System.Text.Encoding.UTF8.GetBytes(
+                    UserName + ":" + Password
+        ));}
     }
 }

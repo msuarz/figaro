@@ -1,3 +1,4 @@
+using System.Collections.Specialized;
 using Figaro;
 using Figaro.Classes;
 using FluentSpec;
@@ -48,7 +49,7 @@ namespace Specs {
 
         [TestClass]
         public class a_RequestFactory : BehaviorOf<RequestFactoryClass>{
-
+            
             [TestMethod]
             public void should_build_a_new_Request() {
                 var Fixture = Actors.HttpFixture;
@@ -71,6 +72,18 @@ namespace Specs {
                 
                 When.RequestUriString("host", "expected uri")
                     .ShouldBe("http://host/expected uri");
+            }
+
+            [TestMethod]
+            public void should_do_basic_auth() {
+                var Headers = new NameValueCollection();
+
+                Given.NewHttpRequest.Headers.Are(Headers);
+                Given.Encrypt("User", "Password").Is("encrypted credentials");
+
+                When.AddAuthorization("Basic", "User", "Password");
+
+                Headers["Authorization"].ShouldBe("Basic " + "encrypted credentials");
             }
         }
     }
