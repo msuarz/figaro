@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
 
@@ -12,9 +13,15 @@ namespace Figaro {
 
         public string Content { get; set; }
 
-        public string ValueOf(string Part) { return 
-            Document.XPathSelectElement(Part).Value
-        ;}
+        public string ValueOf(string Part) {
+            return Part.StartsWith("/") ?
+                Document.XPathSelectElement(Part).Value :
+                ValueOfObject(Part);
+        }
 
+        public virtual string ValueOfObject(string part)
+        {
+            return null;
+        }
     }
 }
