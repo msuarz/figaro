@@ -11,11 +11,12 @@ namespace Figaro.Classes {
 
             var Uri = RequestUriString(Fixture.Host, Fixture.Uri);
         
-            NewHttpRequest = new HttpRequest { Core = WebRequest.Create(Uri) };
+            NewHttpRequest = new HttpRequest {
+                Core = WebRequest.Create(Uri),
+                Method = Fixture.Method,
+            };
 
             AddAuthorization(Fixture.Authorization, Fixture.UserName, Fixture.Password);
-
-            NewHttpRequest.Method = Fixture.Method;
 
             return NewHttpRequest;
         }
@@ -27,8 +28,8 @@ namespace Figaro.Classes {
         public virtual void AddAuthorization(string Authorization, string UserName, string Password) { 
             if (string.IsNullOrEmpty(Authorization)) return;
 
-            NewHttpRequest.Headers.Add("Authorization", 
-                Authorization + " " + Encrypt(UserName, Password));
+            NewHttpRequest.Headers["Authorization"] =
+                Authorization + " " + Encrypt(UserName, Password);
         }
 
         public virtual string Encrypt(string UserName, string Password) { return

@@ -6,7 +6,7 @@ namespace Figaro.Classes {
     public class HttpRequest : Request, Wrap<WebRequest> {
         
         public WebRequest Core { get; set; }
-
+        public NameValueCollection Headers { get { return Core.Headers; } }
         public string Method {
             get { return Core.Method; } 
             set { Core.Method = value; }
@@ -16,6 +16,5 @@ namespace Figaro.Classes {
             new HttpResponse { Core = Core.GetResponse() }
         ;}}
 
-        public NameValueCollection Headers { get { return Core.Headers; } }
     }
 }

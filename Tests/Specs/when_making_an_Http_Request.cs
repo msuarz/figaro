@@ -58,6 +58,12 @@ namespace Specs {
                     .WillReturn("http://google.com");
 
                 The.NewRequest(Fixture).ShouldNotBeNull();
+                And.AddAuthorization(
+                    Fixture.Authorization, 
+                    Fixture.UserName,
+                    Fixture.Password
+                );
+                And.NewHttpRequest.Method = Fixture.Method;
             }
 
             [TestMethod]
@@ -74,15 +80,28 @@ namespace Specs {
                     .ShouldBe("http://host/expected uri");
             }
 
+        }
+
+        [TestClass]
+        public class the_authorization : BehaviorOf<RequestFactoryClass>{
+            
+            readonly NameValueCollection Headers = new NameValueCollection();
+
+            [TestInitialize]
+            public void SetUp() { Given.NewHttpRequest.Headers.Are(Headers); }
+
             [TestMethod]
-            public void should_do_basic_auth() {
-                var Headers = new NameValueCollection();
+            public void should_be_disabled_by_default(){
 
-                Given.NewHttpRequest.Headers.Are(Headers);
+                When.AddAuthorization(null, "User", "Password");
+                Headers["Authorization"].ShouldBeNull();
+            }
+
+            [TestMethod]
+            public void should_be_Basic_if_desired(){
+
                 Given.Encrypt("User", "Password").Is("encrypted credentials");
-
                 When.AddAuthorization("Basic", "User", "Password");
-
                 Headers["Authorization"].ShouldBe("Basic " + "encrypted credentials");
             }
         }
