@@ -1,3 +1,5 @@
+|FigarO.W3Schools.XmlTest||22:03:10 Mon, May 10, 2010|
+|FigarO.W3Schools||20:21:55 Mon, May 10, 2010|
 |FigarO.TwitterApi.RateLimitStatus||22:47:30 Sat, May 08, 2010|
 |FigarO.TwitterApi.HelpTest||22:46:50 Sat, May 08, 2010|
 |FigarO.TwitterApi.TesT||22:40:25 Sat, May 08, 2010|

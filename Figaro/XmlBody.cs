@@ -1,4 +1,5 @@
 ﻿using System.Xml.Linq;
+using System.Xml.Serialization;
 using System.Xml.XPath;
 
 namespace Figaro {
@@ -14,5 +15,6 @@ namespace Figaro {
         public string ValueOf(string Part) { return 
             Document.XPathSelectElement(Part).Value
         ;}
+
     }
 }

@@ -16,6 +16,14 @@ namespace Specs {
                 Given.Content = "<field>42</field>";
                 The.ValueOf("/field").ShouldBe("42");
             }
+
+            [TestMethod]
+            public void should_be_able_to_find_Values_using_Objects(){
+
+                Given.Content = "<dog><name>Fido</name><breed>Chihuahua</breed></dog>";
+                The.ValueOf("dog.name").ShouldBe("Fido");
+                The.ValueOf("dog.breed").ShouldBe("Chihuahua");
+            }
         }
 
         [TestClass]
