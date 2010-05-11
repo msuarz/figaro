@@ -18,13 +18,11 @@ namespace Specs {
             }
 
             [TestMethod]
-            public void should_be_able_to_detect_path_for_Objects(){
+            public void should_be_able_to_find_Values_using_Object_Path(){
 
                 Given.Content = "<dog><name>Fido</name></dog>";
-                Given.ValueOfObject("dog.name").Is("Fido");
                 The.ValueOf("dog.name").ShouldBe("Fido");
             }
-
 
         }
 

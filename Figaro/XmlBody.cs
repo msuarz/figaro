@@ -14,14 +14,9 @@ namespace Figaro {
         public string Content { get; set; }
 
         public string ValueOf(string Part) {
-            return Part.StartsWith("/") ?
-                Document.XPathSelectElement(Part).Value :
-                ValueOfObject(Part);
+            if (!Part.StartsWith("/")) Part = "/" + Part.Replace(".", "/");
+             return Document.XPathSelectElement(Part).Value;
         }
 
-        public virtual string ValueOfObject(string part)
-        {
-            return null;
-        }
     }
 }
