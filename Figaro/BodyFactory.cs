@@ -1,3 +1,4 @@
+using System;
 using fit;
 using StructureMap;
 
@@ -11,11 +12,17 @@ namespace Figaro {
                 C.TheDefault.Is.Type<XmlBody>();
         }));
 
-        public static Fixture NewResponseBodyFixture(string ContentType, string Content) {
-            var BodyFixture = new ResponseBodyFixture{ Body = Container.GetInstance<Body>(ContentType) };
+        public static Fixture NewResponseBodyFixture
+            (string ContentType, string Content, string PartPrefix = "") {
+            
+            var BodyFixture = new ResponseBodyFixture{ 
+                Body = Container.GetInstance<Body>(ContentType),
+                PartPrefix = PartPrefix 
+            };
             
             BodyFixture.Body.Content = Content;
             return BodyFixture;
         }
+
     }
 }
