@@ -1,6 +1,6 @@
 |Http|
 
-!|GET|http://w3schools.com/xml/cd_catalog.xml|
+|GET|http://w3schools.com/xml/cd_catalog.xml|
 
 |Send|
 
@@ -11,7 +11,7 @@
 
 
 !*< The Carpet, don't look here
-|Comment|
+|Comment                       |
 |Response Body   |CATALOG.CD[1]|
 |TITLE?          |ARTIST?      |
 |Empire Burlesque|Bob Dylan    |
