@@ -5,7 +5,6 @@ describe "when making an Http Request" do
   before(:each) do
     @sut = Figaro::HttpFixture.new
     @sut.RequestFactory = test_object_for(Figaro::RequestFactory)
-    @actors = Specs::Helpers::Actors.new
   end
 
   it "should be able to GET" do
@@ -23,9 +22,10 @@ describe "when making an Http Request" do
   it "should send the Request and get Response" do
     request = test_object_for Figaro::Request
     expected_response = test_object_for Figaro::Response
-    request.stubs(:Response).returns(expected_response)
 
-    @sut.RequestFactory.stubs(:NewRequest).with(@sut).returns(request)
+    stub(request).Response {expected_response}
+    stub(@sut.RequestFactory).NewRequest(@sut) {request}
+
     @sut.Send
 
     @sut.Response.should == expected_response
@@ -38,11 +38,14 @@ describe "when making an Http Request" do
     end
 
     it "should build a new Request" do
-#      sut = Figaro::Classes::RequestFactoryClass.new
-#      fixture = Specs::Helpers::Actors::HttpFixture
-#
-#      fixture.Uri.should == 'uri'
-#      sut.stubs(:RequestUriString).with()
+      sut = Figaro::Classes::RequestFactoryClass.new
+      fixture = Actors.http_fixture
+
+      sut.NewRequest(fixture)
+
+      sut.NewHttpRequest.should_not be_nil
+      sut.NewHttpRequest.Method.should == fixture.Method;
+      sut.NewHttpRequest.Headers['Authorization'].should_not be_nil  
     end
 
     it "should use Uri if no Host provided" do

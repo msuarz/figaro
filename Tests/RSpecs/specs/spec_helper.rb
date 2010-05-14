@@ -1,10 +1,12 @@
 require "spec"
-require "mocha"
+require "rr"
 require File.join(File.dirname(__FILE__), "../../Specs/bin/debug","Figaro.dll")
 require File.join(File.dirname(__FILE__), "../../Specs/bin/debug","Specs.dll")
+require "helpers/actors.rb"
 
 Spec::Runner.configure do |config|
- config.mock_with :mocha
+  config.mock_with RR::Adapters::Rspec
+# config.mock_with :rr
 end
 
 def test_object_for(class_or_interface)
