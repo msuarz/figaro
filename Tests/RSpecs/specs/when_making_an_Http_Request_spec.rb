@@ -1,4 +1,5 @@
 require "spec_helper.rb"
+include System::Collections::Specialized
 
 describe "when making an Http Request" do
 
@@ -45,7 +46,6 @@ describe "when making an Http Request" do
 
       sut.NewHttpRequest.should_not be_nil
       sut.NewHttpRequest.Method.should == fixture.Method;
-      sut.NewHttpRequest.Headers['Authorization'].should_not be_nil  
     end
 
     it "should use Uri if no Host provided" do
@@ -56,6 +56,27 @@ describe "when making an Http Request" do
     it "should compose Uri with Host if provided" do
       @sut.RequestUriString("host", "expected uri").
         should == "http://host/expected uri"
+    end
+  end
+
+  describe "the Authorization" do
+
+    before(:each) do
+      @sut = Figaro::Classes::RequestFactoryClass.new
+      @sut.NewHttpRequest = test_object_for Figaro::Request
+
+      @headers = System::Collections::Specialized::NameValueCollection.new
+      stub(@sut.NewHttpRequest).Headers {@headers}
+    end
+
+    it "should be disabled by default" do
+      @sut.AddAuthorization(nil, "User", "Password");
+      @headers["Authorization"].should be_nil;
+    end
+
+    it "should be Basic if desired" do
+      @sut.AddAuthorization("Basic", "User", "Password");
+      @headers["Authorization"].should =~ /^Basic/;
     end
   end
 end
