@@ -6,7 +6,6 @@ require "helpers/actors.rb"
 
 Spec::Runner.configure do |config|
   config.mock_with RR::Adapters::Rspec
-# config.mock_with :rr
 end
 
 def test_object_for(class_or_interface)
