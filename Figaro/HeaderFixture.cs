@@ -13,6 +13,9 @@ namespace Figaro {
 
         public string Name { get; set; }
 
-        public string Value { get { return Headers[Name]; } }
+        public string Value {
+            get { return Headers[Name]; }
+            set { Headers[Name] = value; }
+        }
     }
 }
