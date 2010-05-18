@@ -1,4 +1,3 @@
-using System;
 using Figaro.Classes;
 using fit;
 
@@ -32,7 +31,7 @@ namespace Figaro {
         }
 
         public Fixture ResponseHeader { get { return new 
-            HeaderFixture(Response.Headers)
+            HeaderFixture { Headers = Response.Headers }
         ;}}
 
         public Fixture ResponseBody() { return 
