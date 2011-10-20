@@ -1,6 +1,0 @@
-!*> defines
-
-!define FilesUri {http://github.com/jperkelens/figaro/raw/master/Tests/files/}
-
-*!
-!contents -R2 -g -p -f -h

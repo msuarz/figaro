@@ -1,3 +1,0 @@
-!include FigarO
-
-!note Release v20100303
