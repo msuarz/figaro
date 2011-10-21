@@ -5,9 +5,27 @@ module Figaro
 
   class Request
 
+    attr_reader :sut
+
     def initialize(url)
       @url = url
       @options = { :headers => {}}
+    end
+
+    def client
+      RestClient::Resource.new @url, @options
+    end
+
+    def get(resource)
+      @sut = client[resource].get
+    end
+
+    def post(resource, content)
+      @sut = client[resource].post content
+    end
+
+    def put(resource, content)
+      @sut = client[resource].put(content)
     end
 
     def user(value)
@@ -30,12 +48,8 @@ module Figaro
       headers[:content_type] = value
     end
 
-    def client
-      RestClient::Resource.new @url, @options
-    end
-
-    def get(resource)
-      client[resource].get
+    def accept(value)
+      headers[:accept] = value
     end
 
   end
