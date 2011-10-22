@@ -1,5 +1,5 @@
 module Figaro
-  class EchoTest
+  class Echo
     def echo(x)
       x
     end

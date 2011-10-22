@@ -20,12 +20,12 @@ module Figaro
       @sut = client[resource].get
     end
 
-    def post(resource, content)
+    def post_to(content, resource)
       @sut = client[resource].post content
     end
 
-    def put(resource, content)
-      @sut = client[resource].put(content)
+    def put_in(content, resource)
+      @sut = client[resource].put content
     end
 
     def user(value)
